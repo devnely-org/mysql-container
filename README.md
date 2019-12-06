@@ -1,122 +1,55 @@
-MySQL SQL Database Server Container Image
+MySQL SQL Database Server Container Image For Wordpress
 ======================================
 
-This repository contains Dockerfiles for MySQL images for OpenShift and general usage.
-Users can choose between RHEL, Fedora and CentOS based images.
+This repository is a fork from https://github.com/sclorg/mysql-container.git.
 
-For more information about using these images with OpenShift, please see the
-official [OpenShift Documentation](https://docs.okd.io/latest/using_images/db_images/mysql.html).
+The original "README.md" ( "repo forked" ) is [README.md](.github/README_ORIGINAL.md)
 
-For more information about contributing, see
-[the Contribution Guidelines](https://github.com/sclorg/welcome/blob/master/contribution.md).
-For more information about concepts used in these container images, see the
-[Landing page](https://github.com/sclorg/welcome).
+The repository is part of a project ( "Laboratory Environment for Wordpress")  whose objective  is to create a laboratory environment to work through Openshit 3.11 on a website created with Wordpress. In this repository we create container image mysql database for Wordpress based on Centos7.
 
+This is not a project of collaboration with "sclorg/mysql-container", so the master branch used just to keep this repository up to date. For more information about working to repository to see [aquí](.github/WORKFLOW.md). 
 
-Versions
----------------
-MySQL versions currently provided are:
-* [MySQL 5.7](5.7)
-* [MySQL 8.0](8.0)
+# Getting Started 
 
-RHEL versions currently supported are:
-* RHEL7
-* RHEL8
+We create a custom container with mysql in centos7 system. For this we use [source-to-image](https://github.com/openshift/source-to-image) technology.
 
-CentOS versions currently supported are:
-* CentOS7
+We create two branches:
+- "main" what is the production
+- "develop" which is the development
 
+## Prerequisites
+   - Openshift 3.11
+   - git
+   - github
+   - you want
+   
+# Running the tests
+ 
+ The tests are developed in openshitf and we will not show their development and performance. If we note that we will do individualized tests for each image and a global one with all the images at play (wordpress and mysql).
+ 
+# Contributing
 
-Installation
-----------------------
-Choose either the CentOS7 or RHEL7 based image:
+In principle it is a personal and public project.
 
-*  **RHEL7 based image**
+# Versioning
 
-    These images are available in the [Red Hat Container Catalog](https://access.redhat.com/containers/#/registry.access.redhat.com/rhscl/mysql-80-rhel7).
-    To download it run:
+We use [SemVer](https://semver.org/) for versioning. For the versions available, see the tags on this repository.
 
-    ```
-    $ podman pull registry.access.redhat.com/rhscl/mysql-80-rhel7
-    ```
+# Authors
 
-    To build a RHEL7 based MySQL image, you need to run Docker build on a properly
-    subscribed RHEL machine.
-
-    ```
-    $ git clone --recursive https://github.com/sclorg/mysql-container.git
-    $ cd mysql-container
-    $ git submodule update --init
-    $ make build TARGET=rhel7 VERSIONS=8.0
-    ```
-
-*  **CentOS7 based image**
-
-    This image is available on DockerHub. To download it run:
-
-    ```
-    $ podman pull centos/mysql-80-centos7
-    ```
-
-    To build a CentOS based MySQL image from scratch, run:
-
-    ```
-    $ git clone --recursive https://github.com/sclorg/mysql-container.git
-    $ cd mysql-container
-    $ git submodule update --init
-    $ make build TARGET=centos7 VERSIONS=8.0
-    ```
-
-For using other versions of MySQL, just replace the `8.0` value by particular version
-in the commands above.
-
-Note: while the installation steps are calling `podman`, you can replace any such calls by `docker` with the same arguments.
-
-**Notice: By omitting the `VERSIONS` parameter, the build/test action will be performed
-on all provided versions of MySQL, which must be specified in  `VERSIONS` variable.
-This variable must be set to a list with possible versions (subdirectories).**
+    . jemiliolopez - Initial work - PurpleBooth
 
 
-Usage
----------------------------------
+# License
 
-For information about usage of Dockerfile for MySQL 5.7,
-see [usage documentation](5.7).
+This project is licensed under the APACHE License original - see the LICENSE file for details
 
-For information about usage of Dockerfile for MySQL 8.0,
-see [usage documentation](8.0).
+# Acknowledgments
+ To all, who are many and anonymous, who have contributed their knowledge and experience by sharing it with people.
 
+ 
+ 
+ 
+   
+   
 
-Test
----------------------------------
-
-This repository also provides a test framework, which checks basic functionality
-of the MySQL image.
-
-Users can choose between testing MySQL based on a RHEL or CentOS image.
-
-*  **RHEL based image**
-
-    To test a RHEL7 based MySQL image, you need to run the test on a properly
-    subscribed RHEL machine.
-
-    ```
-    $ cd mysql-container
-    $ git submodule update --init
-    $ make test TARGET=rhel7 VERSIONS=8.0
-    ```
-
-*  **CentOS based image**
-
-    ```
-    $ cd mysql-container
-    $ git submodule update --init
-    $ make test TARGET=centos7 VERSIONS=8.0
-    ```
-
-For using other versions of MySQL, just replace the `8.0` value by particular version
-in the commands above.
-
-**Notice: By omitting the `VERSIONS` parameter, the build/test action will be performed
-on all provided versions of MySQL, which must be specified in  `VERSIONS` variable.
-This variable must be set to a list with possible versions (subdirectories).**
