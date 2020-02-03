@@ -66,9 +66,11 @@ setcap -r ${MYSQL_PREFIX}/libexec/mysqld
 # owner mysql.0; that allows to avoid a+rwx for this dir
 /usr/libexec/fix-permissions /var/lib/mysql ${MYSQL_CONFIG_FILE}.d ${APP_DATA}/..
 
+
 mkdir -p /silo
 
 /usr/libexec/fix-permissions /silo
+
 
 usermod -a -G root mysql
 
