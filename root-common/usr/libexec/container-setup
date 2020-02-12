@@ -54,8 +54,11 @@ fi
 
 # setup directory for data
 mkdir -p /var/lib/mysql/data
+# mkdir -p /silo/mysql/data
 chown -R mysql:0 /var/lib/mysql
+# chown -R mysql:0 /silo/mysql
 restorecon -R /var/lib/mysql
+# restorecon -R /silo/mysql
 
 # remove linux capability of the daemon, since it does not work in the container
 setcap -r ${MYSQL_PREFIX}/libexec/mysqld

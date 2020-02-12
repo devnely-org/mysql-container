@@ -1,0 +1,18 @@
+!/usr/bin/bash
+
+<<<<<<< HEAD
+set -x
+
+shopt -s dotglob ## para mover los archivos ocultos
+set -eo pipefail
+
+mv /var/lib/mysql/data /silo/mysql && \
+ln -s /silo/mysql/data /var/lib/mysql/data
+
+=======
+mv /var/lib/mysql/data /silo/mysql
+ln -s /silo/mysql/data /var/lib/mysql/data
+
+
+>>>>>>> 743dfde65d84d17a0229cf8dd65b06818a02e474
+/usr/libexec/fix-permissions /silo
