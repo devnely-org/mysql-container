@@ -66,6 +66,10 @@ setcap -r ${MYSQL_PREFIX}/libexec/mysqld
 # owner mysql.0; that allows to avoid a+rwx for this dir
 /usr/libexec/fix-permissions /var/lib/mysql ${MYSQL_CONFIG_FILE}.d ${APP_DATA}/..
 
+<<<<<<< HEAD
+
+mkdir -p /silo
+=======
 mkdir -p /silo
 
 chmod -R a+rwX /silo && \
@@ -73,6 +77,7 @@ chmod -R a+rwX /silo && \
     chown -R mysql:0 /silo && \
     chown -R mysql:0 /silo && \
     chmod 0777 -R /silo 
+>>>>>>> ec0e664... Add file 71-link-mount.sh y modoficamos container-setup
 
 /usr/libexec/fix-permissions /silo
 
